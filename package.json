@@ -1,0 +1,15 @@
+{
+  "name": "cms",
+  "version": "1.0.0",
+  "description": "A cms in node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "cms"
+  },
+  "repository": {
+    "type": "git",
+    "url": "samuel"
+  },
+  "author": "",
+  "license": "ISC"
+}
