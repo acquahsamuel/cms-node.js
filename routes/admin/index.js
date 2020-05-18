@@ -13,9 +13,6 @@ router.get('/', (req, res) => {
 });
 
 
-router.get('/dashboard', (req, res) => {
-    res.render('admin/dashboard');
-});
 
 
 
