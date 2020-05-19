@@ -22,8 +22,11 @@
     "express-handlebars": "^4.0.4",
     "lodash": "^4.17.15",
     "mongodb": "^3.5.7",
-    "mongoose": "^5.9.14",
+    "mongoose": "^5.9.15",
     "nodemailer": "^6.4.6",
     "passport": "^0.4.1"
+  },
+  "devDependencies": {
+    "handlebars": "^4.7.6"
   }
 }
