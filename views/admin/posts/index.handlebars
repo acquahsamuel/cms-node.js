@@ -5,17 +5,20 @@
         <tr>
             <th>Id </th>
             <th>Title </th>
-             <th> Status </th>
+            <th> Status </th>
             <th> Allow Comments </th>
+            <th> Edit </th>
         </tr>
     </thead>
     <tbody>
         {{#each posts}}
         <tr>
-            <td> {{id}}</td>
+            <td> {{_id}}</td>
             <td> {{title}} </td>
             <td> {{status}} </td>
             <td> {{allowComments}} </td>
+            <td> <a href="/admin/posts/edit/{{_id}}" class="btn btn-info"> Edit </a></td>
+            
         </tr>
         {{/each}}
     </tbody>

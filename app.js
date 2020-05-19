@@ -4,6 +4,8 @@ const path = require("path");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const {select} = require('./helpers/handlebars-helpers');
+
 
 mongoose.Promise = global.Promise;
 
@@ -21,7 +23,7 @@ mongoose.connection
   });
 
 
-  
+
 /* BodyParser */
 
 app.use(bodyParser.json());
@@ -29,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.use(express.static(path.join(__dirname, "public")));
-app.engine("handlebars", exphbs({ defaultLayout: "home" }));
+app.engine("handlebars", exphbs({ defaultLayout: "home", helpers : {select: select}}));
 app.set("view engine", "handlebars");
 
 /* Loading routes for external */
@@ -48,3 +50,4 @@ const port = 4500 || process.env.PORT;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
