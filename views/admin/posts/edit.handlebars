@@ -2,8 +2,7 @@
     <div class="col-md">
         <h1> Edit Post </h1>
 
-
-        <form action="/admin/posts/edit" method="POST">
+        <form action="/admin/posts/edit/{{post._id}}?_method=PUT" method="post">
             <div class="form-group">
                 <label for="title"> Title </label>
                 <input name="title" type="text" class="form-control" value="{{post.title}}">

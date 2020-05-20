@@ -4,6 +4,7 @@ const path = require("path");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const methodOverride = require('method-override');
 const {select} = require('./helpers/handlebars-helpers');
 
 
@@ -28,6 +29,8 @@ mongoose.connection
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
+
 
 
 app.use(express.static(path.join(__dirname, "public")));
