@@ -8,8 +8,22 @@ const methodOverride = require('method-override');
 const {select} = require('./helpers/handlebars-helpers');
 
 
+
+
 mongoose.Promise = global.Promise;
 
+<<<<<<< HEAD
+// Loading routes for external 
+const home = require('./routes/home/index');
+const admin = require('./routes/admin/index');
+const posts = require('./routes/admin/posts');
+
+
+// Loading routes for external 
+app.use('/' , home);
+app.use('/admin' , admin);
+app.use('/admin/posts' , posts);
+=======
 const url = "mongodb://localhost:27017/cms";
 
 mongoose.connect(url, {
@@ -22,11 +36,20 @@ mongoose.connection
   .on("error", err => {
     console.log(`Could not connect to database`, err);
   });
+>>>>>>> 988d8aa94c58ef23d72150d5d1c2f3102366dd56
 
 
+ 
 
 /* BodyParser */
 
+<<<<<<< HEAD
+const port  = 4500 || process.env.PORT ;
+
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+  });
+=======
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
@@ -54,4 +77,5 @@ const port = 4500 || process.env.PORT;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+>>>>>>> 988d8aa94c58ef23d72150d5d1c2f3102366dd56
 

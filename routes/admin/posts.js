@@ -1,3 +1,23 @@
+<<<<<<< HEAD
+const express = require('express');
+const router = express.Router();
+
+
+router.all('/*', (req , res , next)=>{
+    req.app.locals.layout = 'admin';
+    next();
+});
+
+ 
+router.get('/',(req, res)=>{
+    res.send('/admin/posts/');
+})
+
+
+module.exports = router;
+
+
+=======
 const express = require("express");
 const router = express.Router();
 const Post = require("../../models/Post");
@@ -86,3 +106,4 @@ router.delete("/:_id", (req, res) => {
 });
 
 module.exports = router;
+>>>>>>> 988d8aa94c58ef23d72150d5d1c2f3102366dd56
