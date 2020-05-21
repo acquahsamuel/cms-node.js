@@ -43,6 +43,7 @@ const admin = require("./routes/admin/index");
 const posts = require("./routes/admin/posts");
 
 
+
 /* Loading routes for external */
 app.use("/", home);
 app.use("/admin", admin);
