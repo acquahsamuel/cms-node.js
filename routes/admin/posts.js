@@ -36,16 +36,14 @@ router.post("/create", (req, res) => {
     errors.push({ message: "please add a title " });
   }
 
- 
   if (!req.body.body) {
     errors.push({ message: "please add a description " });
   }
 
-
   if (errors.length > 0) {
     res.render("admin/posts/create", {
       errors: errors
-    })
+    });
   } else {
     let filename = "";
 
@@ -77,7 +75,10 @@ router.post("/create", (req, res) => {
     newPost
       .save()
       .then(savedPost => {
-        console.log(savedPost);
+        req.flash(
+          `success_message`,
+          `Post ${savedPost.title} was created successfully`
+        );
         res.redirect("/admin/posts");
       })
       .catch(error => {
@@ -98,6 +99,8 @@ router.get("/edit/:_id", (req, res) => {
     });
 });
 
+
+
 router.put("/edit/:_id", (req, res) => {
   Post.findOne({
     _id: req.params._id
@@ -113,7 +116,21 @@ router.put("/edit/:_id", (req, res) => {
     post.allowComments = allowComments;
     post.body = req.body.body;
 
+    if (!isEmpty(req.files)) {
+      let file = req.files.file;
+      filename = Date.now() + "-" + file.name;
+      post.file = filename;
+
+      file.mv("./public/uploads/" + filename, err => {
+        if (err) throw err;
+      });
+    }
+
     post.save().then(updatedPost => {
+      req.flash(
+        `success_message`,
+        `Post ${updatedPost.title} was created successfully`
+      );
       res.redirect("/admin/posts");
     });
   });
@@ -125,6 +142,7 @@ router.delete("/:_id", (req, res) => {
   }).then(post => {
     fs.unlink(uploadDir + post.file, err => {
       post.remove();
+      req.flash(`error_message`, `Post delete was created successfully`);
       res.redirect("/admin/posts");
     });
   });

@@ -1,3 +1,5 @@
+const moment = require("moment");
+
 module.exports = {
   select: function (selected, options) {
     return options
@@ -6,5 +8,11 @@ module.exports = {
         new RegExp(' value="' + selected + '"'),
         '$&selected="selected"'
       );
+  },
+
+  generateDate: function (date, format) {
+    return moment(date).format(format);
   }
 };
+
+

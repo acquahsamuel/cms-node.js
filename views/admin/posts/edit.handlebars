@@ -1,12 +1,21 @@
 <div class="row mr-auto">
     <div class="col-md">
         <h1> Edit Post </h1>
+       
 
-        <form action="/admin/posts/edit/{{post._id}}?_method=PUT" method="post">
+        <form action="/admin/posts/edit/{{post._id}}?_method=PUT" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title"> Title </label>
                 <input name="title" type="text" class="form-control" value="{{post.title}}">
             </div>
+
+
+          <div class="form-group">
+                <label for="file"> File Upload </label>
+                <input name="file" type="file" class="form-control" placeholder="Enter title">
+            </div>
+
+
 
             <div class="form-group">
                 <label for="status">Status</label>
@@ -33,8 +42,10 @@
                     class="form-control">{{post.body}}</textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-sm"> Submit </button>
+            <button type="submit" class="btn btn-primary btn-sm"> Update Post  </button>
 
         </form>
     </div>
 </div>
+
+
