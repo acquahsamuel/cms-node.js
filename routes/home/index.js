@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const express = require("express");
 const router = express.Router();
 const Post = require("../../models/Post");
@@ -35,3 +36,36 @@ router.get("/post/:_id", (req, res) => {
 
 
 module.exports = router;
+=======
+const express = require('express');
+const router = express.Router();
+
+
+router.all('/*', (req , res , next)=>{
+    req.app.locals.layout = 'home';
+    next();
+});
+
+
+router.get('/', (req, res) => {
+    res.render('home/index');
+});
+
+
+router.get('/about', (req, res) => {
+    res.render('home/about');
+});
+
+
+router.get('/login', (req, res) => {
+    res.render('home/login');
+});
+
+
+router.get('/register', (req, res) => {
+    res.render('home/register');
+});
+
+
+module.exports = router;
+>>>>>>> 94cf152fbaea6ceb850a311c8dec65b16c5551fe

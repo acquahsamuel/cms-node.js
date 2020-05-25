@@ -23,6 +23,7 @@ const PostSchema = new Schema({
   body: {
     type: String,
     default: true
+<<<<<<< HEAD
   },
 
   file : {
@@ -40,4 +41,9 @@ const PostSchema = new Schema({
 
 
 
+=======
+  }
+});
+
+>>>>>>> 94cf152fbaea6ceb850a311c8dec65b16c5551fe
 module.exports = mongoose.model("post", PostSchema);
