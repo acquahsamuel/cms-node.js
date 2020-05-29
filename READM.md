@@ -2,6 +2,7 @@
 A cms project in node.js
 
 This is open node.js with mongodb project 
+Free to download and Modify
 
 #npm packaages
 
