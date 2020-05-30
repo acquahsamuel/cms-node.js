@@ -65,6 +65,8 @@ const home = require("./routes/home/index");
 const admin = require("./routes/admin/index");
 const posts = require("./routes/admin/posts");
 const categories = require("./routes/admin/categories");
+const comments = require("./routes/admin/comments");
+
 
 
 /* Loading routes for external */
@@ -72,7 +74,7 @@ app.use("/", home);
 app.use("/admin", admin);
 app.use("/admin/posts", posts);
 app.use("/admin/categories", categories);
-
+app.use("/admin/comments", comments);
 
 
 const port = 4500 || process.env.PORT;
@@ -80,4 +82,3 @@ const port = 4500 || process.env.PORT;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-

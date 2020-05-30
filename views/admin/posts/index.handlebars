@@ -4,47 +4,33 @@
     <thead>
         <tr>
             <th>Id </th>
-<<<<<<< HEAD
             <th> Image </th>
             <th>Title </th>
             <th> Status </th>
+            <th> Category </th>
             <th> Allow Comments </th>
-             <th> Date </th>
+            <th> Date </th>
             <th> Edit </th>
             <th> Delete </th>
-=======
-            <th>Title </th>
-            <th> Status </th>
-            <th> Allow Comments </th>
-            <th> Edit </th>
-             <th> Delete </th>
->>>>>>> 94cf152fbaea6ceb850a311c8dec65b16c5551fe
         </tr>
     </thead>
     <tbody>
         {{#each posts}}
         <tr>
             <td> {{_id}}</td>
-<<<<<<< HEAD
             <td><img height="40px" class="img-responsive" src="/uploads/{{file}}"> </td>
             <td> {{title}} </td>
             <td> {{status}} </td>
+            <td> {{category.name}} </td>
             <td> {{allowComments}} </td>
             <td> {{generateDate date 'MMMM Do YYYY' }} </td>
-=======
-            <td> {{title}} </td>
-            <td> {{status}} </td>
-            <td> {{allowComments}} </td>
->>>>>>> 94cf152fbaea6ceb850a311c8dec65b16c5551fe
             <td> <a href="/admin/posts/edit/{{_id}}" class="btn btn-info btn-sm"> Edit </a></td>
-            <td> 
+            <td>
                 <form action="/admin/posts/{{_id}}?_method=DELETE" method="post">
-                 <button type="submit" class="btn btn-danger btn-sm"> Delete </button>
-                 </form>
+                    <button type="submit" class="btn btn-danger btn-sm"> Delete </button>
+                </form>
             </td>
-            
         </tr>
         {{/each}}
     </tbody>
 </table>
-

@@ -1,4 +1,4 @@
-<h2> Categories </h2>
+<h2> Create Categories </h2>
 
 <div class="row">
     <div class="col-sm-4">
@@ -14,23 +14,36 @@
     </div>
 
     <div class="col-sm-8">
-    <table class="table ">
+    <table class="table table table-striped table-inverse">
+         <label for=""> All  Category </label>
         <thead class="thead-inverse">
+             
             <tr>
                 <th>Id </th>
                 <th>Name </th>
                 <th>Date </th>
-            </tr>
+                <th>Edit  </th>
+                <th>Delete  </th>
+                
+             </tr>
             </thead>
             <tbody>
+              {{#each categories}}
                 <tr>
-
-                    <td></td>
-                    <td></td>
+                    <td>{{_id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{generateDate date 'MMMM Do YYYY' }}</td>
+                    <td><a class="btn btn-dark btn-sm" href="/admin/categories/edit/{{_id}}"><i class="fa fa-edit"></i> Edit </a> </td>
+                    <td> 
+                        <form action="/admin/categories/{{_id}}?_method=DELETE" method="post">
+                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete </button>
+                        </form>
+                    </td>
                 </tr>
+                {{/each}}
+
             </tbody>
     </table>
-
      </div>
 </div>
 

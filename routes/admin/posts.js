@@ -1,29 +1,10 @@
-
 const fs = require("fs");
 const path = require("path");
 const express = require("express");
 const router = express.Router();
 const Post = require("../../models/Post");
+const Category = require("../../models/Category");
 const { isEmpty, uploadDir } = require("../../helpers/upload-helper");
-
-const express = require('express');
-const router = express.Router();
-
-
-router.all('/*', (req , res , next)=>{
-    req.app.locals.layout = 'admin';
-    next();
-});
-
- 
-router.get('/',(req, res)=>{
-    res.send('/admin/posts/');
-})
-
-
-module.exports = router;
-
-
 
 router.all("/*", (req, res, next) => {
   req.app.locals.layout = "admin";
@@ -35,6 +16,7 @@ router.get("/", (req, res) => {
   /*  method to solve the issue */
   Post.find({})
     .lean()
+    .populate('category')
     .then(posts => {
       res.render("admin/posts", {
         posts: posts
@@ -45,8 +27,15 @@ router.get("/", (req, res) => {
     });
 });
 
+
+
+
 router.get("/create", (req, res) => {
-  res.render("admin/posts/create");
+  Category.find()
+    .lean()
+    .then(categories => {
+      res.render("admin/posts/create", { categories: categories });
+    });
 });
 
 router.post("/create", (req, res) => {
@@ -89,6 +78,7 @@ router.post("/create", (req, res) => {
       status: req.body.status,
       allowComments: allowComments,
       body: req.body.body,
+      category : req.body.category,
       file: filename
     });
 
@@ -113,11 +103,17 @@ router.get("/edit/:_id", (req, res) => {
   })
     .lean()
     .then(post => {
-      res.render("admin/posts/edit", {
-        post: post
-      });
+      Category.find()
+        .lean()
+        .then(categories => {
+          res.render("admin/posts/edit", {
+            post: post,
+            categories: categories
+          });
+        });
     });
 });
+
 
 
 
@@ -135,6 +131,7 @@ router.put("/edit/:_id", (req, res) => {
     post.status = req.body.status;
     post.allowComments = allowComments;
     post.body = req.body.body;
+    post.category = req.body.category;
 
     if (!isEmpty(req.files)) {
       let file = req.files.file;
