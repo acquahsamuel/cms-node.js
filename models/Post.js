@@ -2,10 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
-
-  category : {
-    type : Schema.Types.ObjectId,
-    ref : 'categories',
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: "categories"
   },
   title: {
     type: String,
@@ -26,20 +25,21 @@ const PostSchema = new Schema({
     default: true
   },
 
-  file : {
-    type : String,
+  file: {
+    type: String
   },
 
-  date : {
-    type : Date,
-    default : Date.now()
+  date: {
+    type: Date,
+    default: Date.now()
   },
-  
-  comments : [{
-    type : Schema.Types.ObjectId,
-    ref : 'comments',
-  }]
 
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "comments"
+    }
+  ]
 });
 
 module.exports = mongoose.model("posts", PostSchema);
