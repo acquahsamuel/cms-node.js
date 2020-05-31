@@ -8,13 +8,12 @@ const methodOverride = require("method-override");
 const upload = require("express-fileupload");
 const session = require("express-session");
 const flash = require("connect-flash");
+const { mongoDbUrl } = require("./config/database");
 const { select, generateDate } = require("./helpers/handlebars-helpers");
 
 mongoose.Promise = global.Promise;
 
-const url = "mongodb://localhost:27017/cms";
-
-mongoose.connect(url, {
+mongoose.connect(mongoDbUrl, {
   // useMongoClient: true
   useUnifiedTopology: true,
   useNewUrlParser: true
@@ -42,7 +41,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
 /* BodyParser */
 app.use(upload());
 app.use(bodyParser.json());
@@ -59,7 +57,6 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-
 /* Loading routes for external */
 const home = require("./routes/home/index");
 const admin = require("./routes/admin/index");
@@ -67,15 +64,12 @@ const posts = require("./routes/admin/posts");
 const categories = require("./routes/admin/categories");
 const comments = require("./routes/admin/comments");
 
-
-
 /* Loading routes for external */
 app.use("/", home);
 app.use("/admin", admin);
 app.use("/admin/posts", posts);
 app.use("/admin/categories", categories);
 app.use("/admin/comments", comments);
-
 
 const port = 4500 || process.env.PORT;
 
