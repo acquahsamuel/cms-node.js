@@ -34,12 +34,10 @@ const PostSchema = new Schema({
     default: Date.now()
   },
 
-  comments: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "comments"
-    }
-  ]
+  comments: [{
+    type: Schema.Types.ObjectId,
+    ref: "comments"
+  }]
 });
 
 module.exports = mongoose.model("posts", PostSchema);

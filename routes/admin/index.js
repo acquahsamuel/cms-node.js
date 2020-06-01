@@ -34,7 +34,6 @@ router.post('/generate-fake-posts', (req, res)=>{
 });
 
 
-
 module.exports = router;
 
 
