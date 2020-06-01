@@ -10,6 +10,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const { mongoDbUrl } = require("./config/database");
 const { select, generateDate } = require("./helpers/handlebars-helpers");
+const passport = require('passport');
 
 mongoose.Promise = global.Promise;
 
@@ -40,6 +41,12 @@ app.use((req, res, next) => {
   res.locals.error_message = req.flash("error_message");
   next();
 });
+
+/* Passport Initialize */
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 /* BodyParser */
 app.use(upload());
@@ -76,3 +83,4 @@ const port = 4500 || process.env.PORT;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
