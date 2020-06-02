@@ -55,6 +55,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
+
 app.use(express.static(path.join(__dirname, "public")));
 app.engine(
   "handlebars",
