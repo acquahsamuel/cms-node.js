@@ -5,7 +5,7 @@ const Category = require("../../models/Category");
 const User = require("../../models/User");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
-const LocalStrategy = require("passport-local");
+const LocalStrategy = require("passport-local").Strategy;
 
 router.all("/*", (req, res, next) => {
   req.app.locals.layout = "home";
@@ -43,7 +43,7 @@ passport.use(new LocalStrategy({usernameField : 'email'}, (email, password, done
       if(matched){
         return done(null, user);
       }else{
-        return done(null , false , {message : 'Incorrect passwprd'});
+        return done(null , false , {message : 'Incorrect password'});
       }
     });
   });
@@ -54,14 +54,12 @@ passport.serializeUser(function(user , done){
   done(null , user.id);
 });
 
-
 passport.deserializeUser(function(id, done){
   User.findById(id , function(err , user){
     done(err , user);
   });
 });
-
-
+ 
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", {
     successRedirect: "/admin",
@@ -69,6 +67,8 @@ router.post("/login", (req, res, next) => {
     failureFlash: true
   })(req, res, next);
 });
+
+
 
 router.get("/register", (req, res) => {
   res.render("home/register");
@@ -152,6 +152,13 @@ router.post("/register", (req, res) => {
     });
   }
 });
+
+
+router.get('/logout', (req , res)=>{
+  req.logout();
+  res.redirect('/login');
+});
+
 
 router.get("/post/:_id", (req, res) => {
   Post.findOne({

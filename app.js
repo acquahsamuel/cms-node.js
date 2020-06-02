@@ -34,17 +34,21 @@ app.use(
   })
 );
 
-// Displaying errors Local variables using middlewares
-app.use(flash());
-app.use((req, res, next) => {
-  res.locals.success_message = req.flash("success_message");
-  res.locals.error_message = req.flash("error_message");
-  next();
-});
-
-/* Passport Initialize */
+/* Passport Initialize for sessions */
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+// Displaying errors Local variables using middlewares flash messages
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.user = req.user || null; // displaying the users name profile 
+  res.locals.success_message = req.flash("success_message");
+  res.locals.error_message = req.flash("error_message");
+  res.locals.form_errors = req.flash('form_errors');
+  res.locals.error = req.flash('error');
+  next();
+});
 
 
 
@@ -64,7 +68,7 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-/* Loading routes for external */
+/* Loading routes for external pages */
 const home = require("./routes/home/index");
 const admin = require("./routes/admin/index");
 const posts = require("./routes/admin/posts");
