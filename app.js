@@ -10,7 +10,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const { mongoDbUrl } = require("./config/database");
 const { select, generateDate } = require("./helpers/handlebars-helpers");
-const passport = require('passport');
+const passport = require("passport");
 
 mongoose.Promise = global.Promise;
 
@@ -38,25 +38,23 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // Displaying errors Local variables using middlewares flash messages
 app.use(flash());
 app.use((req, res, next) => {
-  res.locals.user = req.user || null; // displaying the users name profile 
+  res.locals.user = req.user || null; // displaying the users name profile
   res.locals.success_message = req.flash("success_message");
   res.locals.error_message = req.flash("error_message");
-  res.locals.form_errors = req.flash('form_errors');
-  res.locals.error = req.flash('error');
+  res.locals.form_errors = req.flash("form_errors");
+  res.locals.error = req.flash("error");
   next();
 });
-
-
 
 /* BodyParser */
 app.use(upload());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+
 
 app.use(express.static(path.join(__dirname, "public")));
 app.engine(
@@ -87,4 +85,3 @@ const port = 4500 || process.env.PORT;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
