@@ -4,9 +4,41 @@ Hive is the Silicon Valley of Ghana and Africa
 
 .objectName = access the objectName
 
+<<<<<<< HEAD
 Python 3.7
 Scikit - learn
 Classical Machine Learning (Machine)
+=======
+MethodName.objectName 
+LocalStrategy.name = 
+
+
+
+Ayeduase Office 
+
+git checkout -b(branch) nameOfBranch
+git checkout -b test
+
+
+git diff 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 5a5bb1fb4bccece4e0a2c336921ef2585ec97ad3
 
 
 
