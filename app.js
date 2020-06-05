@@ -25,6 +25,7 @@ mongoose.connection
     console.log(`Could not connect to database`, err);
   });
 
+
 // Sessions
 app.use(
   session({
