@@ -25,6 +25,8 @@ mongoose.connection
     console.log(`Could not connect to database`, err);
   });
 
+
+
 // Sessions
 app.use(
   session({
@@ -85,3 +87,7 @@ const port = 4500 || process.env.PORT;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+
+
+
