@@ -8,6 +8,9 @@ MethodName.objectName
 LocalStrategy.name = 
 
 
+
+Ayeduase Office 
+
 git checkout -b(branch) nameOfBranch
 git checkout -b test
 
@@ -26,90 +29,6 @@ git diff
 
 
 
-
-
-
-
-
-- Ayeduase Office
-- Daniel 
-- Atia 
-- Darlinton 
-- Wilson 
-- Chris
-- Debbie
-
-
-Write about a particular technique you learnt about Git on Lucid
-
-Git pull technique 
-
-
-
-GitHub is a project management and a code version control system as well as a social network platform made for developers. But what is GitHub used for? Well, among all, it allows you to work collaboratively with other people around the world, plan your projects and track your work.
-
-
-
-Terms used on GitHub 
-
-
-
-Repository
-Repository  is a directory where your project’s files are stored. It can be located on GitHub’s storage or a local repository on your computer. You can store code files, images, audios, or everything related to the project in the repository.
-
-
-
-Forking a Repository
-Forking a repository means you make a new project based on the existing repository. In plain English, forking a repo means you copy an existing repository, make some changes needed, store the new version as a new repository, and call this your own project.
-
-This is a great feature that boosts project development. Because it is a totally new project, the central repository won’t be affected. If the ‘master’ repository is updated, you can also apply the update to your current fork.
-
-Follow the steps below to fork a repository in GitHub:
-
-Find the repository you want to fork
-Click the Fork button
-
-
-
-
-Branch
-The branch is a copy of your repository. You can use the branch when you want to make a development in isolation.
-
-Working on a branch will not affect the central repository or other branches. If you’ve done the work, you can merge your branch into other branches and central repository using the pull request.
-
-
-
-My GitHub Technique i learnt on Lucid 
-
-
-
-Git pull usage
-
-
-How it works
-The git pull command first runs git fetch which downloads content from the specified remote repository. Then a git merge is executed to merge the remote content refs and heads into a new local merge commit. To better demonstrate the pull and merging process let us consider the following example. Assume we have a repository with a master branch and a remote origin.
-
-
-
-
-Pull Request
-
-
-Pull request means you inform others that you’ve pushed the change you made in a branch to the master repository. The repository’s collaborators can accept or reject a pull request. Once it is opened, you can discuss and review your work with the collaborators.
-
-Follow the steps below to create a pull request in GitHub:
-
-Navigate to the repository and find the branch menu
-In the branch menu, choose a branch that contains your commit
-Click New pull request button next to the branch menu
-Insert the title and description for your pull request
-Hit Create pull request button
-
-
-Git pull and syncing
-git pull is one of many commands that claim the responsibility of 'syncing' remote content. The git remote command is used to specify what remote endpoints the syncing commands will operate on. The git push command is used to upload content to a remote repository.
-
-The git fetch command can be confused with git pull. They are both used to download remote content. An important safety distinction can me made between git pull and get fetch. git fetch can be considered the "safe" option whereas, git pull can be considered unsafe. git fetch will download the remote content and not alter the state of the local repository. Alternatively, git pull will download remote content and immediately attempt to change the local state to match that content. This may unintentionally cause the local repository to get in a conflicted state.
 
 
 
