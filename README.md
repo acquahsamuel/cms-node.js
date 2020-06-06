@@ -42,7 +42,14 @@
     npm install 
 
 
+<<<<<<< HEAD
 ***INSERT ANOTHER GRAPHIC HERE***
+=======
+
+***INSERT ANOTHER GRAPHIC HERE***
+<!--  -->
+<!-- [![INSERT YOUR GRAPHIC HERE](http://i.imgur.com/dt8AUb6.png)]() -->
+>>>>>>> 37fc4624538dd1acc9e37f41f3cbcda202827cfd
 
 - Most people will glance at your `README`, *maybe* star it, and leave
 - Ergo, people should understand instantly what your project is about based on your repo
@@ -53,10 +60,13 @@
 - MAKE IT PRETTY
 - GIFS ARE REALLY COOL
 
+<<<<<<< HEAD
 > GIF Tools
 
 - Use <a href="http://recordit.co/" target="_blank">**Recordit**</a> to create quicks screencasts of your desktop and export them as `GIF`s.
 - For terminal sessions, there's <a href="https://github.com/chjj/ttystudio" target="_blank">**ttystudio**</a> which also supports exporting `GIF`s.
+=======
+>>>>>>> 37fc4624538dd1acc9e37f41f3cbcda202827cfd
 
 
 ## Table of Contents (Optional)
@@ -74,20 +84,7 @@
 
 ---
 
-## Example (Optional)
 
-```javascript
-// code away!
-
-let generateProject = project => {
-  let code = [];
-  for (let js = 0; js < project.length; js++) {
-    code.push(js);
-  }
-};
-```
-
----
 
 ## Installation
 
@@ -96,7 +93,7 @@ let generateProject = project => {
 
 ### Clone
 
-- Clone this repo to your local machine using `https://github.com/fvcproductions/SOMEREPO`
+- Clone this repo to your local machine using `https://github.com/fvcproductions/`
 
 ### Setup
 
@@ -142,9 +139,6 @@ $ bower install
 - **Option 2**
     - 👯 Clone this repo to your local machine using `https://github.com/joanaz/HireDot2.git`
 
-### Step 2
-
-- **HACK AWAY!** 🔨🔨🔨
 
 ### Step 3
 
@@ -183,4 +177,4 @@ Reach out to me at one of the following places!
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
-- Copyright 2015 © <a href="http://fvcproductions.com" target="_blank">FVCproductions</a>.
+- Copyright 2020 © <a href="http://fvcproductions.com" target="_blank">FVCproductions</a>.

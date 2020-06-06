@@ -3,6 +3,11 @@ Hive is the Silicon Valley of Ghana and Africa
 =========================
 .objectName = access the objectName
 
+
+Python 3.7
+Scikit - learn
+Classical Machine Learning (Machine)
+=======
 MethodName.objectName 
 LocalStrategy.name = 
 
@@ -49,6 +54,32 @@ DHT digital Humity and Temperature Sensor   11
 - Debbie
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Deep Learning
+Rienforcement Learning 
+
+
+MethodName.objectName 
+LocalStrategy.name = 
+
+
+value == 0 {Mean no error was found }
+value > 0 {Means error was found }
 
 
 

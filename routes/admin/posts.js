@@ -61,7 +61,8 @@ router.post("/create", (req, res) => {
 
     if (!isEmpty(req.files)) {
       let file = req.files.file;
-      filename = Date.now() + "-" + file.name;
+      // filename = Date.now() + "-" + file.name;
+      filename = "-" + file.name;
 
       file.mv("./public/uploads/" + filename, err => {
         if (err) throw err;
