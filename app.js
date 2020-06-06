@@ -12,6 +12,7 @@ const { mongoDbUrl } = require("./config/database");
 const { select, generateDate } = require("./helpers/handlebars-helpers");
 const passport = require("passport");
 
+
 mongoose.Promise = global.Promise;
 
 mongoose.connect(mongoDbUrl, {

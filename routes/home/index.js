@@ -38,6 +38,8 @@ router.get("/login", (req, res) => {
 passport.use(new LocalStrategy({usernameField : 'email'}, (email, password, done) =>{
   User.findOne({email : email}).then(user =>{
     if(!user) return done(null , false, {message : 'No user found'});
+
+    // Comparing passwords from database with input
     bcrypt.compare(password, user.password, (err, matched) =>{
       if(err) return err;
       if(matched){
@@ -50,6 +52,7 @@ passport.use(new LocalStrategy({usernameField : 'email'}, (email, password, done
 }));
 
 
+// Check here if bug is found 
 passport.serializeUser(function(user , done){
   done(null , user.id);
 });
@@ -60,12 +63,21 @@ passport.deserializeUser(function(id, done){
   });
 });
  
+
+// App Login Module 
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", {
     successRedirect: "/admin",
     failureRedirect: "/login",
     failureFlash: true
   })(req, res, next);
+});
+
+
+
+router.get('/logout', (req , res)=>{
+  req.logout();
+  res.redirect('/login');
 });
 
 
@@ -154,10 +166,6 @@ router.post("/register", (req, res) => {
 });
 
 
-router.get('/logout', (req , res)=>{
-  req.logout();
-  res.redirect('/login');
-});
 
 
 router.get("/post/:_id", (req, res) => {
