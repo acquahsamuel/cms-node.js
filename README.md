@@ -42,14 +42,7 @@
     npm install 
 
 
-<<<<<<< HEAD
 ***INSERT ANOTHER GRAPHIC HERE***
-=======
-
-***INSERT ANOTHER GRAPHIC HERE***
-<!--  -->
-<!-- [![INSERT YOUR GRAPHIC HERE](http://i.imgur.com/dt8AUb6.png)]() -->
->>>>>>> 37fc4624538dd1acc9e37f41f3cbcda202827cfd
 
 - Most people will glance at your `README`, *maybe* star it, and leave
 - Ergo, people should understand instantly what your project is about based on your repo
@@ -60,13 +53,6 @@
 - MAKE IT PRETTY
 - GIFS ARE REALLY COOL
 
-<<<<<<< HEAD
-> GIF Tools
-
-- Use <a href="http://recordit.co/" target="_blank">**Recordit**</a> to create quicks screencasts of your desktop and export them as `GIF`s.
-- For terminal sessions, there's <a href="https://github.com/chjj/ttystudio" target="_blank">**ttystudio**</a> which also supports exporting `GIF`s.
-=======
->>>>>>> 37fc4624538dd1acc9e37f41f3cbcda202827cfd
 
 
 ## Table of Contents (Optional)
