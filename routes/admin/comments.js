@@ -5,19 +5,16 @@ const Comment = require("../../models/Comment");
 
 
 router.post("/", (req, res) => {
-  Post.findOne({ _id: req.body.id })
+  Post.findOne({_id: req.body.id })
     .then(post => {
       /*  console.log(post); */
       const newComment = new Comment({
         user: req.user.id,
-        body: req.body.body
-      }).catch(err => {
-        console.log("Error found " + err);
-      });
-
+        body: req.body.body,
+      })
       post.comments.push(newComment);
       post.save().then(postSaved => {
-        newComment.save(commentSaved => {
+        newComment.save().then(commentSaved => {
           res.redirect(`/post/${post.id}`);
         });
       });
@@ -26,5 +23,7 @@ router.post("/", (req, res) => {
       console.log("Error found" + err);
     });
 });
+
+
 
 module.exports = router;
