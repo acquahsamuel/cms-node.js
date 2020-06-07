@@ -27,10 +27,6 @@ mongoose.connection
   });
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 37fc4624538dd1acc9e37f41f3cbcda202827cfd
 // Sessions
 app.use(
   session({
@@ -39,6 +35,8 @@ app.use(
     saveUninitialized: true
   })
 );
+
+
 
 /* Passport Initialize for sessions */
 app.use(passport.initialize());

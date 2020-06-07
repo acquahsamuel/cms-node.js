@@ -29,7 +29,9 @@
 
           <hr>
 
+        {{#if user}}
           <!-- Comments Form -->
+          {{#if post.allowComments}}
           <div class="card my-4">
             <h5 class="card-header">Leave a Comment:</h5>
             <div class="card-body">
@@ -43,6 +45,14 @@
               </form>
             </div>
           </div>
+          {{else}}
+
+          <h4> Comment not allowed for this post </h4>
+
+
+          {{/if}}
+          
+          {{/if}}
 
           <!-- Single Comment -->
           <div class="media mb-4">

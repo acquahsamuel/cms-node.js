@@ -5,21 +5,19 @@ const router = express.Router();
 const Post = require("../../models/Post");
 const Category = require("../../models/Category");
 const { isEmpty, uploadDir } = require("../../helpers/upload-helper");
-const {userAuthenticated} = require("../../helpers/authentication");
-
+const { userAuthenticated } = require("../../helpers/authentication");
 
 router.all("/*", userAuthenticated, (req, res, next) => {
   req.app.locals.layout = "admin";
   next();
 });
 
-
 router.get("/", (req, res) => {
   /*  Attach Post.find({}).lean().then(posts */
   /*  method to solve the issue */
   Post.find({})
     .lean()
-    .populate('category')
+    .populate("category")
     .then(posts => {
       res.render("admin/posts", {
         posts: posts
@@ -29,9 +27,6 @@ router.get("/", (req, res) => {
       console.log("There was something wrong" + error);
     });
 });
-
-
-
 
 router.get("/create", (req, res) => {
   Category.find()
@@ -82,7 +77,7 @@ router.post("/create", (req, res) => {
       status: req.body.status,
       allowComments: allowComments,
       body: req.body.body,
-      category : req.body.category,
+      category: req.body.category,
       file: filename
     });
 
@@ -117,9 +112,6 @@ router.get("/edit/:_id", (req, res) => {
         });
     });
 });
-
-
-
 
 router.put("/edit/:_id", (req, res) => {
   Post.findOne({
@@ -160,13 +152,24 @@ router.put("/edit/:_id", (req, res) => {
 router.delete("/:_id", (req, res) => {
   Post.findOne({
     _id: req.params._id
-  }).then(post => {
-    fs.unlink(uploadDir + post.file, err => {
-      post.remove();
-      req.flash(`error_message`, `Post delete was created successfully`);
-      res.redirect("/admin/posts");
+  })
+    .populate("comments")
+    .then(post => {
+      fs.unlink(uploadDir + post.file, err => {
+
+        // Deleting post with comments 
+        if (!post.comments.length < 1) {
+          post.comments.forEach(comment => {
+            comment.remove();
+          });
+        }
+
+        post.remove().then(postRemoved => {
+          req.flash(`error_message`, `Post delete was created successfully`);
+          res.redirect("/admin/posts");
+        });
+      });
     });
-  });
 });
 
 module.exports = router;
