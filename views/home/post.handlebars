@@ -47,12 +47,16 @@
           </div>
           {{else}}
 
+
           <h4> Comment not allowed for this post </h4>
 
+          {{/if}}
 
+          {{else}}
+      
+          <a href="/login"> <h4> You need to login to comment on post </h4></a>
           {{/if}}
-          
-          {{/if}}
+          <hr> 
 
           <!-- Single Comment -->
           <div class="media mb-4">
