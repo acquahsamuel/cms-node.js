@@ -11,6 +11,7 @@ router.all('/*', userAuthenticated, (req , res , next)=>{
 });
 
 
+
 router.get('/', (req, res) => {
     res.render('admin/index');
 });

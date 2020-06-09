@@ -156,8 +156,7 @@ router.delete("/:_id", (req, res) => {
     .populate("comments")
     .then(post => {
       fs.unlink(uploadDir + post.file, err => {
-
-        // Deleting post with comments 
+        // Deleting post with comments {Key Code}
         if (!post.comments.length < 1) {
           post.comments.forEach(comment => {
             comment.remove();

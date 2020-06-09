@@ -4,7 +4,7 @@ const Post = require("../../models/Post");
 const Comment = require("../../models/Comment");
 
 router.get("/", (req, res) => {
-  Comment.find({user : req.user.id})
+  Comment.find({ user: req.user.id })
     .lean()
     .populate("user")
     .then(comments => {
@@ -16,8 +16,8 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
   Post.findOne({
-      _id: req.body.id
-    })
+    _id: req.body.id
+  })
     .then(post => {
       /*  console.log(post); */
       const newComment = new Comment({
@@ -36,17 +36,29 @@ router.post("/", (req, res) => {
     });
 });
 
+
+
+// There is little bug here fix it
 router.delete("/:_id", (req, res) => {
-  Comment.findOne({
+  Comment.remove({
     _id: req.params._id
-  }).then(comment => {
-      comment.remove();
-      Post.findOneAndUpdate({comments : req.params.id}, {$pull : {comments : req.params.id}}, (err , data) =>{
-        if(err) console.log(err);
+  }).then(deleteItem => {
+    deleteItem.remove();
+    Post.findOneAndUpdate(
+      { comments: req.params.id },
+      { $pull: { comments: req.params.id } },
+      (err, data) => {
+        if (err) console.log(err);
         res.redirect("/admin/comments");
-      })  
-    });
+      }
+    );
+  });
 });
+
+
+
+
+
 
 
 
