@@ -35,36 +35,36 @@ router.get("/login", (req, res) => {
   res.render("home/login");
 });
 
-passport.use(new LocalStrategy({usernameField : 'email'}, (email, password, done) =>{
-  User.findOne({email : email}).then(user =>{
-    if(!user) return done(null , false, {message : 'No user found'});
+passport.use(
+  new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
+    User.findOne({ email: email }).then(user => {
+      if (!user) return done(null, false, { message: "No user found" });
 
-    // Comparing passwords from database with input
-    bcrypt.compare(password, user.password, (err, matched) =>{
-      if(err) return err;
-      if(matched){
-        return done(null, user);
-      }else{
-        return done(null , false , {message : 'Incorrect password'});
-      }
+      // Comparing passwords from database with input
+      bcrypt.compare(password, user.password, (err, matched) => {
+        if (err) return err;
+        if (matched) {
+          return done(null, user);
+        } else {
+          return done(null, false, { message: "Incorrect password" });
+        }
+      });
     });
-  });
-}));
+  })
+);
 
-
-// Check here if bug is found 
-passport.serializeUser(function(user , done){
-  done(null , user.id);
+// Check here if bug is found
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done){
-  User.findById(id , function(err , user){
-    done(err , user);
+passport.deserializeUser(function (id, done) {
+  User.findById(id, function (err, user) {
+    done(err, user);
   });
 });
- 
 
-// App Login Module 
+// App Login Module
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", {
     successRedirect: "/admin",
@@ -73,14 +73,10 @@ router.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-
-
-router.get('/logout', (req , res)=>{
+router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect('/login');
+  res.redirect("/login");
 });
-
-
 
 router.get("/register", (req, res) => {
   res.render("home/register");
@@ -165,14 +161,16 @@ router.post("/register", (req, res) => {
   }
 });
 
-
-
-
 router.get("/post/:_id", (req, res) => {
   Post.findOne({
-      _id: req.params._id
-    }).populate("user")
-    .populate({path : 'comments', match : {approveComment : true} , populate :{path : 'user' , model : 'users'}})
+    _id: req.params._id
+  })
+    .populate("user")
+    .populate({
+      path: "comments",
+      match: { approveComment: true },
+      populate: { path: "user", model: "users" }
+    })
     .lean()
     .then(post => {
       Category.find({})
@@ -186,6 +184,4 @@ router.get("/post/:_id", (req, res) => {
     });
 });
 
-
 module.exports = router;
-
