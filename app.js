@@ -12,7 +12,6 @@ const { mongoDbUrl } = require("./config/database");
 const { select, generateDate } = require("./helpers/handlebars-helpers");
 const passport = require("passport");
 
-
 mongoose.Promise = global.Promise;
 
 mongoose.connect(mongoDbUrl, {
@@ -26,8 +25,6 @@ mongoose.connection
     console.log(`Could not connect to database`, err);
   });
 
-
-
 // Sessions
 app.use(
   session({
@@ -36,9 +33,6 @@ app.use(
     saveUninitialized: true
   })
 );
-
-
-
 
 /* Passport Initialize for sessions */
 app.use(passport.initialize());
@@ -60,7 +54,6 @@ app.use(upload());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-
 
 app.use(express.static(path.join(__dirname, "public")));
 app.engine(
@@ -91,7 +84,3 @@ const port = 4500 || process.env.PORT;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
-
-
-

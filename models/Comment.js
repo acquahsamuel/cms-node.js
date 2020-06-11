@@ -10,6 +10,10 @@ const CommentSchema = new Schema({
     type: String,
     required: true
   },
+  approveComment : {
+    type : Boolean,
+  },
+
    date : {
      type  : Date,
      default : Date.now(),
@@ -17,5 +21,4 @@ const CommentSchema = new Schema({
 });
 
 module.exports = mongoose.model("comments", CommentSchema);
-
 

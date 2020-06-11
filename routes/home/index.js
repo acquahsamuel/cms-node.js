@@ -172,7 +172,7 @@ router.get("/post/:_id", (req, res) => {
   Post.findOne({
       _id: req.params._id
     }).populate("user")
-    .populate({path : 'comments', populate :{path : 'user' , model : 'users'}})
+    .populate({path : 'comments', match : {approveComment : true} , populate :{path : 'user' , model : 'users'}})
     .lean()
     .then(post => {
       Category.find({})
