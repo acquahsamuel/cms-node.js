@@ -171,7 +171,8 @@ router.post("/register", (req, res) => {
 router.get("/post/:_id", (req, res) => {
   Post.findOne({
       _id: req.params._id
-    }).populate({path : 'comments', populate :{path : 'user' , model : 'users'}})
+    }).populate("user")
+    .populate({path : 'comments', populate :{path : 'user' , model : 'users'}})
     .lean()
     .then(post => {
       Category.find({})
@@ -187,3 +188,4 @@ router.get("/post/:_id", (req, res) => {
 
 
 module.exports = router;
+

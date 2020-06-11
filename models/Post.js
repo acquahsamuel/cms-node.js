@@ -2,6 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
+
+  user : {
+    type : Schema.Types.ObjectId,
+    ref : "users",
+  },
+
   category: {
     type: Schema.Types.ObjectId,
     ref: "categories"
@@ -41,4 +47,3 @@ const PostSchema = new Schema({
 }, {usePushEach : true});
 
 module.exports = mongoose.model("posts", PostSchema);
-

@@ -28,6 +28,18 @@ router.get("/", (req, res) => {
     });
 });
 
+
+
+// Getting each user specify posts
+router.get("/my-posts", (req, res) => {
+  Post.find({ user: req.user._id })
+    .populate("category")
+    .then(posts => {
+      res.render("admin/posts/my-posts" ,{posts : posts})
+    });
+});
+
+
 router.get("/create", (req, res) => {
   Category.find()
     .lean()
@@ -73,6 +85,7 @@ router.post("/create", (req, res) => {
 
     const newPost = new Post({
       _id: req.body.id,
+      user: req.user.id,
       title: req.body.title,
       status: req.body.status,
       allowComments: allowComments,
@@ -123,6 +136,7 @@ router.put("/edit/:_id", (req, res) => {
       allowComments = false;
     }
 
+    post.user = req.user.id;
     post.title = req.body.title;
     post.status = req.body.status;
     post.allowComments = allowComments;
@@ -144,7 +158,7 @@ router.put("/edit/:_id", (req, res) => {
         `success_message`,
         `Post ${updatedPost.title} was created successfully`
       );
-      res.redirect("/admin/posts");
+      res.redirect("/admin/posts/my-posts");
     });
   });
 });
@@ -165,7 +179,7 @@ router.delete("/:_id", (req, res) => {
 
         post.remove().then(postRemoved => {
           req.flash(`error_message`, `Post delete was created successfully`);
-          res.redirect("/admin/posts");
+          res.redirect("/admin/posts/my-posts");
         });
       });
     });
