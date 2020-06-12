@@ -13,19 +13,30 @@ router.all("/*", (req, res, next) => {
 });
 
 router.get("/", (req, res) => {
+  const perPage = 10;
+  const page = req.query.page || 1;
+
   Post.find({})
     .lean()
+    .skip((perPage * page) - perPage)
+    .limit(perPage)
     .then(posts => {
-      Category.find({})
-        .lean()
-        .then(categories => {
-          res.render("home/index", {
-            posts: posts,
-            categories: categories
+
+      Post.count().then(postCount => {
+        Category.find({})
+          .lean()
+          .then(categories => {
+            res.render("home/index", {
+              posts: posts,
+              categories: categories,
+              current: parseInt(page),
+              pages: Math.ceil(postCount / perPage)
+            });
           });
-        });
+      });
     });
 });
+
 
 router.get("/about", (req, res) => {
   res.render("home/about");
@@ -161,9 +172,9 @@ router.post("/register", (req, res) => {
   }
 });
 
-router.get("/post/:_id", (req, res) => {
+router.get("/post/:slug", (req, res) => {
   Post.findOne({
-    _id: req.params._id
+    slug: req.params.slug
   })
     .populate("user")
     .populate({

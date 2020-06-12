@@ -9,7 +9,7 @@ const upload = require("express-fileupload");
 const session = require("express-session");
 const flash = require("connect-flash");
 const { mongoDbUrl } = require("./config/database");
-const { select, generateDate } = require("./helpers/handlebars-helpers");
+const { select, generateDate , paginate } = require("./helpers/handlebars-helpers");
 const passport = require("passport");
 
 mongoose.Promise = global.Promise;
@@ -60,7 +60,7 @@ app.engine(
   "handlebars",
   exphbs({
     defaultLayout: "home",
-    helpers: { select: select, generateDate: generateDate }
+    helpers: { select: select, generateDate: generateDate , paginate :  paginate }
   })
 );
 app.set("view engine", "handlebars");
@@ -84,3 +84,4 @@ const port = 4500 || process.env.PORT;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+

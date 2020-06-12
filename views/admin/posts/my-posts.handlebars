@@ -9,21 +9,22 @@
             <th> Status </th>
             <th> Category </th>
             <th> Allow Comments </th>
+            <th> View Posts  </th>
             <th> Date </th>
-            <th> Edit </th>
-            <th> Delete </th>
+          {{!--   <th> Edit </th>
+            <th> Delete </th> --}}
         </tr>
     </thead>
     <tbody>
-        {{#each user.posts}}
+        {{#each posts}}
         <tr>
-            <td> {{user._id}}</td>
+            <td> {{_id}}</td>
             <td><img height="40px" class="img-responsive" src="/uploads/{{file}}"> </td>
             <td> {{title}} </td>
             <td> {{status}} </td>
             <td> {{category.name}} </td>
             <td> {{allowComments}} </td>
-            <td><a href="/post/{{_id}}">View Post </a></td>
+            <td><a href="/post/{{slug}}">View Post </a></td>
             <td> {{generateDate date 'MMMM Do YYYY' }} </td>
             <td> <a href="/admin/posts/edit/{{_id}}" class="btn btn-info btn-sm"> Edit </a></td>
             <td>
