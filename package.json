@@ -4,7 +4,7 @@
   "description": "A cms in node.js",
   "main": "app.js",
   "scripts": {
-    "test": "cms"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
