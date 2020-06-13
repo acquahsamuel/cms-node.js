@@ -11,6 +11,9 @@ const flash = require("connect-flash");
 const { mongoDbUrl } = require("./config/database");
 const { select, generateDate } = require("./helpers/handlebars-helpers");
 const passport = require("passport");
+// const dotenv =  require('dotenv').config();
+
+
 
 mongoose.Promise = global.Promise;
 
@@ -24,6 +27,9 @@ mongoose.connection
   .on("error", err => {
     console.log(`Could not connect to database`, err);
   });
+
+
+
 
 // Sessions
 app.use(
