@@ -13,8 +13,6 @@ const { select, generateDate } = require("./helpers/handlebars-helpers");
 const passport = require("passport");
 // const dotenv =  require('dotenv').config();
 
-
-
 mongoose.Promise = global.Promise;
 
 mongoose.connect(mongoDbUrl, {
