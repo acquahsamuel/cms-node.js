@@ -54,23 +54,24 @@ router.get("/", (req, res) => {
 
 });
 
-// router.post("/generate-fake-posts", (req, res) => {
-//   //res.send('It works');
+router.post("/generate-fake-posts", (req, res) => {
+  //res.send('It works');
 
-//   for (let i = 0; i < req.body.amount; i++) {
-//     let post = new Post();
+  for (let i = 0; i < req.body.amount; i++) {
+    let post = new Post();
 
-//     post.title = faker.name.title();
-//     post.status = "public";
-//     post.allowComments = faker.random.boolean();
-//     post.body = faker.lorem.sentence();
+    post.title = faker.name.title();
+    post.status = "public";
+    post.allowComments = faker.random.boolean();
+    post.body = faker.lorem.sentence();
 
-//     post.save().then(function (err) {
-//       if (err) throw err;
-//     });
-//   }
-//   res.redirect("/admin/posts");
-// });
+    post.save().then(function (err) {
+      if (err) throw err;
+    });
+  }
+  res.redirect("/admin/posts");
+});
 
 module.exports = router;
+
 

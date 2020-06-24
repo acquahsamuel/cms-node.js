@@ -18,10 +18,9 @@ router.get("/", (req, res) => {
 
   Post.find({})
     .lean()
-    .skip((perPage * page) - perPage)
+    .skip(perPage * page - perPage)
     .limit(perPage)
     .then(posts => {
-
       Post.count().then(postCount => {
         Category.find({})
           .lean()
@@ -36,7 +35,6 @@ router.get("/", (req, res) => {
       });
     });
 });
-
 
 router.get("/about", (req, res) => {
   res.render("home/about");
@@ -172,9 +170,9 @@ router.post("/register", (req, res) => {
   }
 });
 
-router.get("/post/:slug", (req, res) => {
+router.get("/post/:_id", (req, res) => {
   Post.findOne({
-    slug: req.params.slug
+    _id: req.params._id
   })
     .populate("user")
     .populate({
