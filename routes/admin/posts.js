@@ -179,7 +179,7 @@ router.delete("/:_id", (req, res) => {
 
         post.remove().then(postRemoved => {
           req.flash(`error_message`, `Post delete was created successfully`);
-          res.redirect("/admin/posts/my-posts");
+          res.redirect("/admin/posts/");
         });
       });
     });

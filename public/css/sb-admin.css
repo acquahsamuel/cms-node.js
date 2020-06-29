@@ -8,7 +8,9 @@
     min-height: 100%; }
   
   body {
-    overflow-x: hidden; }
+    overflow-x: hidden;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
   
   body.sticky-footer {
     margin-bottom: 56px; }
@@ -216,6 +218,10 @@
   
   #sidenavToggler i {
     font-weight: 800; }
+
+    .form-control:focus{
+      box-shadow: none;
+    }
   
   .navbar-sidenav-tooltip.show {
     display: none; }

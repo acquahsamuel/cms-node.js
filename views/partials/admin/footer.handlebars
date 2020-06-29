@@ -42,15 +42,18 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
 
+<script src="/js/ckeditor/ckeditor.js"></script>
+<script> CKEDITOR.replace( 'editor1' ); </script>
+
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Posts', 'Comments', 'Users', 'Green', 'Purple', 'Orange'],
+        labels: ['Posts', 'Comments', 'Users', 'Category'],
         datasets: [{
-            label: '# of Votes',
-            data: [{{postCount}}, {{postComment}}, {{postUsers}}, 5, 2, 3],
+            label: 'CMS DATA',
+            data: [{{postCount}}, {{postComment}}, {{postUsers}}, {{postCategory}}],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
