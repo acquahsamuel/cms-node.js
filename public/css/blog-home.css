@@ -6,6 +6,11 @@
 
 body {
   padding-top: 54px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.form-control:focus{
+  box-shadow : none;
 }
 
 @media (min-width: 992px) {

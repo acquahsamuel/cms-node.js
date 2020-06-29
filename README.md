@@ -3,7 +3,7 @@
 pentagon-csm is a content management application which helps bloggers and developers upload and publish thier blogs.
 
 ## Screenshot
-<img src="https://drive.google.com/drive/u/2/folders/1PBmmxs_Qg9-ZW5VPDtczBMJ8Q8GGP8UF">
+<img src="./public/ui-readme.img-1.png">
 
 ## Project Structure
 
