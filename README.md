@@ -1,6 +1,6 @@
-# pentagon-csm
+# pentagon-cms
 
-pentagon-csm is a content management application which helps bloggers and developers upload and publish thier blogs.
+pentagon-cms is a content management application which helps bloggers and developers upload and publish thier blogs.
 
 ## Screenshot
 <img src="/public/ui-readme/img-3.png">
