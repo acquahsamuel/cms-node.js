@@ -18,12 +18,12 @@ router.get("/", (req, res) => {
   Post.find({})
     .lean()
     .populate("category")
-    .then(posts => {
+    .then((posts) => {
       res.render("admin/posts", {
-        posts: posts
+        posts: posts,
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.log("There was something wrong" + error);
     });
 });
@@ -33,7 +33,7 @@ router.get("/my-posts", (req, res) => {
   Post.find({ user: req.user._id })
     .lean()
     .populate("category")
-    .then(posts => {
+    .then((posts) => {
       res.render("admin/posts/my-posts", { posts: posts });
     });
 });
@@ -41,7 +41,7 @@ router.get("/my-posts", (req, res) => {
 router.get("/create", (req, res) => {
   Category.find()
     .lean()
-    .then(categories => {
+    .then((categories) => {
       res.render("admin/posts/create", { categories: categories });
     });
 });
@@ -59,7 +59,7 @@ router.post("/create", (req, res) => {
 
   if (errors.length > 0) {
     res.render("admin/posts/create", {
-      errors: errors
+      errors: errors,
     });
   } else {
     let filename = "";
@@ -69,7 +69,7 @@ router.post("/create", (req, res) => {
       // filename = Date.now() + "-" + file.name;
       filename = "-" + file.name;
 
-      file.mv("./public/uploads/" + filename, err => {
+      file.mv("./public/uploads/" + filename, (err) => {
         if (err) throw err;
       });
     }
@@ -89,19 +89,19 @@ router.post("/create", (req, res) => {
       allowComments: allowComments,
       body: req.body.body,
       category: req.body.category,
-      file: filename
+      file: filename,
     });
 
     newPost
       .save()
-      .then(savedPost => {
+      .then((savedPost) => {
         req.flash(
           `success_message`,
           `Post ${savedPost.title} was created successfully`
         );
         res.redirect("/admin/posts");
       })
-      .catch(error => {
+      .catch((error) => {
         console.log("Could not save post " + error);
       });
   }
@@ -109,16 +109,16 @@ router.post("/create", (req, res) => {
 
 router.get("/edit/:_id", (req, res) => {
   Post.findOne({
-    _id: req.params._id
+    _id: req.params._id,
   })
     .lean()
-    .then(post => {
+    .then((post) => {
       Category.find()
         .lean()
-        .then(categories => {
+        .then((categories) => {
           res.render("admin/posts/edit", {
             post: post,
-            categories: categories
+            categories: categories,
           });
         });
     });
@@ -126,8 +126,8 @@ router.get("/edit/:_id", (req, res) => {
 
 router.put("/edit/:_id", (req, res) => {
   Post.findOne({
-    _id: req.params._id
-  }).then(post => {
+    _id: req.params._id,
+  }).then((post) => {
     if (req.body.allowComments) {
       allowComments = true;
     } else {
@@ -146,12 +146,12 @@ router.put("/edit/:_id", (req, res) => {
       filename = Date.now() + "-" + file.name;
       post.file = filename;
 
-      file.mv("./public/uploads/" + filename, err => {
+      file.mv("./public/uploads/" + filename, (err) => {
         if (err) throw err;
       });
     }
 
-    post.save().then(updatedPost => {
+    post.save().then((updatedPost) => {
       req.flash(
         `success_message`,
         `Post ${updatedPost.title} was created successfully`
@@ -163,21 +163,21 @@ router.put("/edit/:_id", (req, res) => {
 
 router.delete("/:_id", (req, res) => {
   Post.findOne({
-    _id: req.params._id
+    _id: req.params._id,
   })
     .populate("comments")
-    .then(post => {
-      fs.unlink(uploadDir + post.file, err => {
+    .then((post) => {
+      fs.unlink(uploadDir + post.file, (err) => {
         // Deleting post with comments {Key Code}
         if (!post.comments.length < 1) {
-          post.comments.forEach(comment => {
+          post.comments.forEach((comment) => {
             comment.remove();
           });
         }
 
-        post.remove().then(postRemoved => {
+        post.remove().then((postRemoved) => {
           req.flash(`error_message`, `Post delete was created successfully`);
-          res.redirect("/admin/posts/my-posts");
+          res.redirect("/admin/posts");
         });
       });
     });

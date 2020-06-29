@@ -21,7 +21,7 @@ router.get("/", (req, res) => {
     .skip(perPage * page - perPage)
     .limit(perPage)
     .then(posts => {
-      Post.count().then(postCount => {
+      Post.countDocuments().then(postCount => {
         Category.find({})
           .lean()
           .then(categories => {
