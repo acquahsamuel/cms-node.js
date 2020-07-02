@@ -4,7 +4,8 @@
   "description": "A cms in node.js",
   "main": "app.js",
   "scripts": {
-    "test": "cms"
+    "test": "cms",
+    "start" : "nodemon app.js"
   },
   "repository": {
     "type": "git",

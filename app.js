@@ -17,11 +17,11 @@ mongoose.Promise = global.Promise;
 mongoose.connect(mongoDbUrl, {
   // useMongoClient: true
   useUnifiedTopology: true,
-  useNewUrlParser: true
+  useNewUrlParser: true,
 });
 mongoose.connection
   .once("open", () => console.log("Connected"))
-  .on("error", err => {
+  .on("error", (err) => {
     console.log(`Could not connect to database`, err);
   });
 
@@ -30,7 +30,7 @@ app.use(
   session({
     secret: "edwindiaz123ilovecoding",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
   })
 );
 
@@ -60,7 +60,7 @@ app.engine(
   "handlebars",
   exphbs({
     defaultLayout: "home",
-    helpers: { select: select, generateDate: generateDate }
+    helpers: { select: select, generateDate: generateDate },
   })
 );
 app.set("view engine", "handlebars");
