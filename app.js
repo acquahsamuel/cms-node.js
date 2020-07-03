@@ -11,6 +11,7 @@ const flash = require("connect-flash");
 const { mongoDbUrl } = require("./config/database");
 const { select, generateDate } = require("./helpers/handlebars-helpers");
 const passport = require("passport");
+const sweetAlert = require("sweetalert");
 
 mongoose.Promise = global.Promise;
 
@@ -28,7 +29,7 @@ mongoose.connection
 // Sessions
 app.use(
   session({
-    secret: "edwindiaz123ilovecoding",
+    secret: "iamsamuelacquahsoftwareengineer",
     resave: true,
     saveUninitialized: true,
   })
@@ -48,6 +49,7 @@ app.use((req, res, next) => {
   res.locals.error = req.flash("error");
   next();
 });
+
 
 /* BodyParser */
 app.use(upload());
@@ -84,4 +86,3 @@ const port = 4500 || process.env.PORT;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-

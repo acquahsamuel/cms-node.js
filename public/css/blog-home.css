@@ -25,6 +25,13 @@ body {
   box-shadow: 2px 2px 2px solid rgba(255, 255, 255, 0.3);
 }
 
+.card-header{
+  background-color: #fff;
+  box-shadow: 2px 2px 2px solid rgba(255, 255, 255, 0.3);
+  border-bottom: none  !important;
+  border-top: none !important;
+}
+
 .card-title{
   text-decoration: underline;
   text-underline-offset: 2px;

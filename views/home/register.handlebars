@@ -2,9 +2,19 @@
     <div class="col-md-7 m-auto">
     
 
-<div class=" card-register mt-5">
+<div class="card card-register mt-5">
     <div class="card-header">Register an Account</div>
     <div class="card-body">
+      {{#if errors}}
+         {{#each errors}}
+
+          <div class="bg-danger text-white">
+            <i class="fa fa-user"></i> 
+             {{message}}
+          </div>
+         {{/each}}
+        {{/if}}
+
         <form action="/register" method="post">
             <div class="form-group">
                 <div class="form">
