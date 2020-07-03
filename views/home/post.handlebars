@@ -1,83 +1,110 @@
- <div class="container">
+<div class="container">
 
-      <div class="row">
+  <div class="row">
 
-        <!-- Post Content Column -->
-        <div class="col-lg-8">
+    <!-- Post Content Column -->
+    <div class="col-lg-8">
 
-          <!-- Title -->
-          <h1 class="mt-4"> {{post.title}}</h1>
+      <!-- Title -->
+      <h1 class="mt-4"> {{post.title}}</h1>
 
-          <!-- Author -->
-          <p class="lead">
-            by
-            <a href="#"> {{post.user.firstName}} </a>
-          </p>
+      <!-- Author -->
+      <p class="lead">
+        by
+        <a href="#"> {{post.user.firstName}} </a>
+      </p>
 
-          <hr>
+      <hr>
 
-          <!-- Date/Time -->
-          <p> Posted on {{generateDate date 'MMMM Do YYYY'}}</p>
-          <hr>
-          <!-- Preview Image -->
-          <img class="img-fluid rounded" src="/uploads/{{post.file}}" alt="">
+      <!-- Date/Time -->
+      <p> Posted on {{generateDate date 'MMMM Do YYYY'}} </p>
+      <hr>
+      <!-- Preview Image -->
+      <img class="img-fluid rounded" src="/uploads/{{post.file}}" alt="">
 
-          <hr>
+      <hr>
 
-          <!-- Post Content -->
-          <p class="lead">{{post.body}} </p>
+      <!-- Post Content -->
+      <p class="lead">{{post.body}} </p>
 
-          <hr>
+      <hr>
 
-        {{#if user}}
-          <!-- Comments Form -->
-          {{#if post.allowComments}}
-          <div class="card my-4">
-            <h5 class="card-header">Leave a Comment:</h5>
-            <div class="card-body">
-              <form action="/admin/comments/" method="post">
-                <div class="form-group">
-                  <textarea  name="body" class="form-control" ></textarea>
-                  <input type="hidden" name="id" value="{{post._id}}">
-                {{!--   <input type="hidden" name="id"> --}}
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
+      {{#if user}}
+      <!-- Comments Form -->
+      {{#if post.allowComments}}
+
+
+
+      <div class="card my-4">
+        <h5 class="card-header">Leave a Comment:</h5>
+        <div class="card-body">
+          <form action="/admin/comments/" method="post">
+            <div class="form-group">
+              <textarea name="body" class="form-control"></textarea>
+              <input type="hidden" name="id" value="{{post._id}}">
+              {{!--   <input type="hidden" name="id"> --}}
             </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+
+
+
+      {{else}}
+
+
+      <h4> Comment not allowed for this post </h4>
+
+      {{/if}}
+
+      {{else}}
+
+      <a href="/login">
+        <h4> You need to login to comment on post </h4>
+      </a>
+      {{/if}}
+      <hr>
+
+      <!-- Single Comment -->
+
+      {{#each post.comments}}
+      <div class="be-comment-block">
+        <h1 class="comments-title">Comments </h1>
+        <div class="be-comment">
+          <div class="be-img-comment">
+            <a href="blog-detail-2.html">
+              <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
+            </a>
           </div>
-          {{else}}
+          <div class="be-comment-content">
+            <span class="be-comment-name">
+              <a href="blog-detail-2.html">{{user.firstName}} </a>
+            </span>
+            <span class="be-comment-time">
+              <i class="fa fa-clock-o"></i>
+              {{generateDate date 'MMMM Do YYYY'}}
+            </span>
 
-
-          <h4> Comment not allowed for this post </h4>
-
-          {{/if}}
-
-          {{else}}
-      
-          <a href="/login"> <h4> You need to login to comment on post </h4></a>
-          {{/if}}
-          <hr> 
-
-          <!-- Single Comment -->
-
-          {{#each post.comments}}
-          <div class="media mb-4">
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-            <div class="media-body">
-              <h5 class="mt-0">{{user.firstName}} </h5>
-                    {{body}} 
-            </div>
+            <p class="be-comment-text">
+              {{body}}
+            </p>
           </div>
-
-          {{/each}}
-
-
         </div>
 
-        <!-- Sidebar Widgets Column -->
-        {{> home/sidebar}}
-
       </div>
-      <!-- /.row -->
+
+
+
+      {{/each}}
+
 
     </div>
+
+    <!-- Sidebar Widgets Column -->
+    {{> home/sidebar}}
+
+  </div>
+  <!-- /.row -->
+
+</div>

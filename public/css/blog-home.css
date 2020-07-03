@@ -6,15 +6,32 @@
 
 body {
   padding-top: 54px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
+  background-color: whitesmoke;
 }
 
-.form-control:focus{
-  box-shadow : none;
+.form-control:focus {
+  box-shadow: none;
 }
 
 @media (min-width: 992px) {
   body {
     padding-top: 56px;
   }
+}
+
+.card {
+  background-color: #fff;
+  box-shadow: 2px 2px 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.card-title{
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.card-footer{
+  border-bottom: none  !important;
+  border-top: none !important;
+  background-color: #fff;
 }
