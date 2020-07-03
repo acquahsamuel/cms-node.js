@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const Post = require("../../models/Post");
-const Category = require("../../models/Category");
-const User = require("../../models/User");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const Post = require("../../models/Post");
+const Category = require("../../models/Category");
+const User = require("../../models/User");
 
 router.all("/*", (req, res, next) => {
   req.app.locals.layout = "home";
@@ -20,8 +20,8 @@ router.get("/", (req, res) => {
         .lean()
         .then((categories) => {
           res.render("home/index", {
-            posts: posts,
-            categories: categories,
+            posts,
+            categories,
           });
         });
     });
