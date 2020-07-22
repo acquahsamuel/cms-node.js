@@ -11,7 +11,7 @@ const flash = require("connect-flash");
 const { mongoDbUrl } = require("./config/database");
 const { select, generateDate } = require("./helpers/handlebars-helpers");
 const passport = require("passport");
-const sweetAlert = require("sweetalert");
+// const sweetAlert = require("sweetalert");
 
 mongoose.Promise = global.Promise;
 
