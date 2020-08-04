@@ -122,7 +122,7 @@ router.put("/edit/:_id", (req, res) => {
 
         if (!isEmpty(req.files)) {
             let file = req.files.file;
-            filename = Date.now() + "-" + file.name;
+            filename =  "-" + file.name;
             post.file = filename;
 
             file.mv("./public/uploads/" + filename, err => {

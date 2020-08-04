@@ -1,50 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="img/favicon.png" type="image/png">
+        <title> Samuel Blog  </title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/blog-home/css/bootstrap.css">
+        <link rel="stylesheet" href="/blog-home/vendors/linericon/style.css">
+        <link rel="stylesheet" href="/blog-home/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/blog-home/vendors/owl-carousel/owl.carousel.min.css">
+        <link rel="stylesheet" href="/blog-home/vendors/lightbox/simpleLightbox.css">
+        <link rel="stylesheet" href="/blog-home/vendors/nice-select/css/nice-select.css">
+        <link rel="stylesheet" href="/blog-home/vendors/animate-css/animate.css">
+        <link rel="stylesheet" href="/blog-home/vendors/jquery-ui/jquery-ui.css">
+        <!-- main css -->
+        <link rel="stylesheet" href="/blog-home/css/style.css">
+        <link rel="stylesheet" href="/blog-home/css/responsive.css">
+    </head>
+    <body>
 
-  <head>
+         {{> home/home-nav}}
+       
+      {{{body }}}
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title> Home </title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="/css/blog-home.css" rel="stylesheet">
-    <link href="/css/blog-post.css" rel="stylesheet">
-    <link href="/css/comments-css.css" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-
-
-
-  </head>
-
-  <body>
-
-   <!--Navigation -->
-   {{> home/home-nav }}
-
-    <!-- Page Content -->
-    <div class="container">
-
+      {{> home/footer}}
     
-         {{!-- {{> home/form-msgs}} --}}
-         {{{body}}}
-    </div>
-    <!-- /.container -->
-
-    <!-- Footer -->
-    {{> home/footer }}
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  </body>
-
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="/blog-home/js/jquery-3.2.1.min.js"></script>
+        <script src="/blog-home/js/popper.js"></script>
+        <script src="/blog-home/js/bootstrap.min.js"></script>
+        <script src="/blog-home/js/stellar.js"></script>
+        <script src="/blog-home/vendors/lightbox/simpleLightbox.min.js"></script>
+        <script src="/blog-home/vendors/nice-select/js/jquery.nice-select.min.js"></script>
+        <script src="/blog-home/vendors/isotope/imagesloaded.pkgd.min.js"></script>
+        <script src="/blog-home/vendors/isotope/isotope-min.js"></script>
+        <script src="/blog-home/vendors/owl-carousel/owl.carousel.min.js"></script>
+        <script src="/blog-home/vendors/jquery-ui/jquery-ui.js"></script>
+        <script src="/blog-home/js/jquery.ajaxchimp.min.js"></script>
+        <script src="/blog-home/js/mail-script.js"></script>
+        <script src="/blog-home/js/theme.js"></script>
+    </body>
 </html>

@@ -8,20 +8,28 @@ const methodOverride = require("method-override");
 const upload = require("express-fileupload");
 const session = require("express-session");
 const flash = require("connect-flash");
-const {mongoDbUrl} = require("./config/database");
 const {select, generateDate} = require("./helpers/handlebars-helpers");
 const passport = require("passport");
-// const sweetAlert = require("sweetalert");
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(mongoDbUrl, { // useMongoClient: true
+const dotenv = require('dotenv');
+dotenv.config({path: './.env'});
+
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/cms', {
+    useNewUrlParser: true,
     useUnifiedTopology: true,
-    useNewUrlParser: true
-});
-mongoose.connection.once("open", () => console.log("Connected")).on("error", (err) => {
-    console.log(`Could not connect to database`, err);
-});
+    useCreateIndex : true,
+})
+
+
+
+
+mongoose.connection.on('connected', () => {
+    console.log('Connection to database successful');
+})
+
 
 // Sessions
 app.use(session({secret: "iamsamuelacquahsoftwareengineer", resave: true, saveUninitialized: true}));
@@ -72,8 +80,8 @@ app.use("/admin/posts", posts);
 app.use("/admin/categories", categories);
 app.use("/admin/comments", comments);
 
-const port = 4500 || process.env.PORT;
-
+const port =  process.env.PORT || 4500 ;
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
+

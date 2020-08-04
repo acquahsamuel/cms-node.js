@@ -1,41 +1,69 @@
-<div class="row">
+    {{> home/home-nav}}
+    {{> home/home-area-banner}}
+   <section class="blog_area p_120">
+            <div class="container">
+                <div class="row">
+                  
+                    <div class="col-lg-8">
+                     
+                        <div class="blog_left_sidebar">
+                           {{#each posts}}
+                            <article class="blog_style1">
+                              
+                            	<div class="blog_img">
+                            		<img class="img-fluid" src="/uploads/{{file}}" alt="">
+                            	</div>
+                            	<div class="blog_text">
+									<div class="blog_text_inner">
+										<div class="cat">
+											<a class="cat_btn" href="#">Gadgets</a>
+											<a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>   {{generateDate date 'MMMM Do YYYY'}} </a>
+											<a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 05</a>
+										</div>
+										<a href="#"><h4>{{title}}</h4></a>
+										{{!-- <p>   Hi  </p>
+                      --}}
+          
+                     <a class="blog_btn" href="/post/{{_id}}">Read More</a>
+									</div>
+							  	</div>
+                     
+                            </article>
+                           {{/each }}
+                          
 
-  <!-- Blog Entries Column -->
-  <div class="col-md-8">
+                   
+                       
+                           
+                            <nav class="blog-pagination justify-content-center d-flex">
+		                        <ul class="pagination">
+		                            <li class="page-item">
+		                                <a href="#" class="page-link" aria-label="Previous">
+		                                    <span aria-hidden="true">
+		                                        <span class="lnr lnr-chevron-left"></span>
+		                                    </span>
+		                                </a>
+		                            </li>
+		                            <li class="page-item"><a href="#" class="page-link">01</a></li>
+		                            <li class="page-item active"><a href="#" class="page-link">02</a></li>
+		                            <li class="page-item"><a href="#" class="page-link">03</a></li>
+		                            <li class="page-item"><a href="#" class="page-link">04</a></li>
+		                            <li class="page-item"><a href="#" class="page-link">09</a></li>
+		                            <li class="page-item">
+		                                <a href="#" class="page-link" aria-label="Next">
+		                                    <span aria-hidden="true">
+		                                        <span class="lnr lnr-chevron-right"></span>
+		                                    </span>
+		                                </a>
+		                            </li>
+		                        </ul>
+		                    </nav>
 
-    <h3 class="my-4"> All posts </h3>
-
-    <!-- Blog Post -->
-    {{#each posts}}
-    <div class="card mb-4">
-      <img class="card-img-top" src="/uploads/{{file}}" alt="Card image cap">
-      <div class="card-body">
-        <h2 class="card-title">{{title}}</h2>
-        <p class="card-text">{{body}} </p>
-        <a href="/post/{{_id}}" class="btn btn-sm btn-outline-dark">Read More &rarr;</a>
-      </div>
-      <div class="card-footer text-muted">
-        {{generateDate date 'MMMM Do YYYY'}} by
-        <a href="#"> User </a>
-      </div>
-    </div>
-    {{/each }}
-
-
-    <!-- Pagination -->
-    <ul class="pagination justify-content-center mb-4">
-      <li class="page-item">
-        <a class="page-link" href="#">&larr; Older</a>
-      </li>
-      <li class="page-item disabled">
-        <a class="page-link" href="#">Newer &rarr;</a>
-      </li>
-    </ul>
-
-  </div>
-
-  <!-- Sidebar Widgets Column -->
-  {{> home/sidebar}}
-
-</div>
-<!-- /.row -->
+                        
+                        </div>
+					         </div>
+					
+                  {{> home/sidebar}}
+                </div>
+            </div>
+        </section>
