@@ -3896,6 +3896,34 @@ h6 {
   margin-right: 0px;
 }
 
+
+
+
+.card {
+  background-color: #fff;
+  box-shadow: 2px 2px 2px solid rgba(255, 255, 255, 0.466) !important;
+  border-radius: 0px;
+}
+
+.card-header{
+  background-color: #fff;
+  box-shadow: 2px 2px 2px solid rgba(255, 255, 255, 0.3);
+  border-bottom: none  !important;
+  border-top: none !important;
+}
+
+.card-title{
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.card-footer{
+  border-bottom: none  !important;
+  border-top: none !important;
+  background-color: #fff;
+}
+
+
 /*---------------------------------------------------- */
 
 /*# sourceMappingURL=style.css.map */

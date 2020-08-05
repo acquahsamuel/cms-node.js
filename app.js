@@ -23,9 +23,6 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/cms', {
     useCreateIndex : true,
 })
 
-
-
-
 mongoose.connection.on('connected', () => {
     console.log('Connection to database successful');
 })
