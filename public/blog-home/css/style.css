@@ -3898,11 +3898,15 @@ h6 {
 
 
 
+/*---------------------------------------------------- */
+
+/*# Add CSS Compoents  */
 
 .card {
   background-color: #fff;
   box-shadow: 2px 2px 2px solid rgba(255, 255, 255, 0.466) !important;
   border-radius: 0px;
+  border: 1px solid #000;
 }
 
 .card-header{
@@ -3921,6 +3925,27 @@ h6 {
   border-bottom: none  !important;
   border-top: none !important;
   background-color: #fff;
+}
+
+.form-control{
+  border-radius: 0px !important ;
+  
+}
+
+.form-control:active{
+  background-color: #fff;
+}
+
+.form-control:focus{
+  box-shadow: none;
+  border-radius: 0px !important ;
+  border-color: #000;
+  background-color: #fff;
+}
+
+
+.btn-outline-dark{
+  border-radius: 0px;
 }
 
 
