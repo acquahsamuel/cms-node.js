@@ -1,5 +1,4 @@
 const express = require("express");
-const faker = require("faker");
 const router = express.Router();
 const Post = require("../../models/Post");
 const Comment = require("../../models/Comment");
