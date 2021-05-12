@@ -31,7 +31,7 @@
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.15",
     "mongoose-url-slugs": "^1.0.2",
-    "nodemailer": "^6.4.6",
+    "nodemailer": "^6.4.16",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "sweetalert": "^2.1.2"
